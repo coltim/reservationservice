@@ -4,6 +4,9 @@ import com.rms.reservationservice.entity.ReservationEntity;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
@@ -11,9 +14,12 @@ import java.time.LocalDateTime;
 public class Reservation {
 
     private String id;
-
+    @NotBlank(message = "First Name should not be empty")
     private String firstName;
+    @NotBlank(message = "Last Name should not be empty")
     private String lastName;
+    @NotNull
+    @FutureOrPresent
     private LocalDateTime reservationTime;
     private int numberOfGuests;
     private int duration;
